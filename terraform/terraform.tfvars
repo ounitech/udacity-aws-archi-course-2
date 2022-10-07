@@ -1,1 +1,1 @@
-ec2-count = 3
+aws-ec2-count = 3

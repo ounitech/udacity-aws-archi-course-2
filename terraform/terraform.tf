@@ -1,12 +1,16 @@
 provider "aws" {
-  access_key = ""
-  secret_key = ""
-  token      = ""
-  region     = "us-east-1"
+  access_key = var.aws-access-key
+  secret_key = var.aws-secret-key
+  token      = var.aws-token
+  region     = var.aws-region
+}
+
+resource "aws_s3_bucket" "example" {
+  bucket = "ounitech-udacity-terraform"
 }
 
 resource "aws_instance" "example" {
-  ami           = "ami-026b57f3c383c2eec"
-  instance_type = "t2.micro"
-  count         = var.ec2-count
+  ami           = var.aws-ec2-ami
+  instance_type = var.aws-ec2-instance-type
+  count         = var.aws-ec2-count
 }
